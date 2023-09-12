@@ -261,7 +261,16 @@
                     Crea una funzione che elimini le vocali da ogni elemento testuale della pagina (puoi aiutarti con i nuovi metodi degli array di ES6)
                   */
 
-      const deleteVowels = function () {};
+      const deleteVowels = function () {
+        const findVocals = document.querySelectorAll("body");
+
+        findVocals.forEach((vocal) => {
+          if (vocal.nodeType === Node.TEXT_NODE) {
+            vocal.textContent = vocal.textContent.replace(/[aeiouAEIOU]/g, "");
+          }
+        });
+      };
+      deleteVowels();
     </script>
   </body>
 </html>
