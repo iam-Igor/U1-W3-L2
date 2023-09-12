@@ -186,7 +186,7 @@
                     */
 
       const makeItClickable = function () {
-        const findH1 = document.querySelector("h1");
+        const findH1 = document.getElementsByTagName("h1")[0];
 
         if (findH1) {
           const text = findH1.innerText;
@@ -214,7 +214,7 @@
       const generateTable = function () {
         const tableId = document.getElementById("tableArea");
         const newTable = document.createElement("table");
-        newTable.style.border = "2px solid black";
+        newTable.style.border = "2px solid black border collapse";
         for (let i = 0; i < 2; i++) {
           const row = document.createElement("tr");
 
@@ -222,7 +222,7 @@
             const cell = document.createElement("td");
             cell.textContent = `Immagine ${i + 1}, Cella ${x + 1}`;
             row.appendChild(cell);
-            cell.style.border = "2px solid black";
+            cell.style.border = "2px solid black ";
           }
           newTable.appendChild(row);
         }
@@ -258,7 +258,7 @@
                   */
 
       const deleteVowels = function () {
-        const findVocals = document.querySelectorAll("body, body *");
+        const findVocals = document.querySelectorAll("body");
 
         findVocals.forEach((vocal) => {
           if (vocal.nodeType === Node.TEXT_NODE) {
