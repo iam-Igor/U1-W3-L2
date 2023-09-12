@@ -110,15 +110,11 @@
                     */
 
       const changePcontent = function () {
-        const findDivFirst = document.getElementsByTagName("div");
+        const findDivFirst = document.querySelectorAll("div p");
 
-        if (findDivFirst.length > 0) {
-          let allP = findDivFirst[0].querySelectorAll("p");
-
-          for (let i = 0; i < allP.length; i++) {
-            allP[i].innerText = "Ho cambiato tutti i p figli di un div!";
-          }
-        }
+        findDivFirst.forEach((p) => {
+          p.innerText = "Qualcos'altro";
+        });
       };
 
       changePcontent();
@@ -262,7 +258,7 @@
                   */
 
       const deleteVowels = function () {
-        const findVocals = document.querySelectorAll("body");
+        const findVocals = document.querySelectorAll("body, body *");
 
         findVocals.forEach((vocal) => {
           if (vocal.nodeType === Node.TEXT_NODE) {
