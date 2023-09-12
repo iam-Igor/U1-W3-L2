@@ -266,7 +266,7 @@
 
         findVocals.forEach((vocal) => {
           if (vocal.nodeType === Node.TEXT_NODE) {
-            vocal.textContent = vocal.textContent.replace(/[aeiouAEIOU]/g, "");
+            vocal.textContent.replace(/[aeiouAEIOU]/g, "");
           }
         });
       };
