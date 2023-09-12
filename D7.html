@@ -212,21 +212,94 @@
                         */
 
       const generateTable = function () {
-        const tableId = document.getElementById("tableArea");
-        const newTable = document.createElement("table");
-        newTable.style.border = "2px solid black border collapse";
-        for (let i = 0; i < 2; i++) {
-          const row = document.createElement("tr");
+        // Array di dati di esempio
+        var datiProdotti = [
+          {
+            immagine: "immagine1.jpg",
+            nome: "Prodotto 1",
+            quantita: 3,
+            prezzo: 10.99,
+          },
+          {
+            immagine: "immagine2.jpg",
+            nome: "Prodotto 2",
+            quantita: 2,
+            prezzo: 8.49,
+          },
+          {
+            immagine: "immagine3.jpg",
+            nome: "Prodotto 3",
+            quantita: 5,
+            prezzo: 15.99,
+          },
+          {
+            immagine: "immagine4.jpg",
+            nome: "Prodotto 4",
+            quantita: 1,
+            prezzo: 5.99,
+          },
+          {
+            immagine: "immagine5.jpg",
+            nome: "Prodotto 5",
+            quantita: 4,
+            prezzo: 12.79,
+          },
+        ];
 
-          for (let x = 0; x < 5; x++) {
-            const cell = document.createElement("td");
-            cell.textContent = `Immagine ${i + 1}, Cella ${x + 1}`;
-            row.appendChild(cell);
-            cell.style.border = "2px solid black ";
-          }
-          newTable.appendChild(row);
-        }
-        tableId.appendChild(newTable);
+        // Riferimento all'elemento "tableArea"
+        var tableArea = document.getElementById("tableArea");
+
+        // Creazione della tabella
+        var table = document.createElement("table");
+
+        // Intestazione della tabella
+        var thead = document.createElement("thead");
+        var headerRow = document.createElement("tr");
+
+        var headers = ["Immagine", "Nome Prodotto", "Quantità", "Prezzo"];
+        headers.forEach(function (headerText) {
+          var th = document.createElement("th");
+          th.appendChild(document.createTextNode(headerText));
+          headerRow.appendChild(th);
+        });
+
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        // Corpo della tabella
+        var tbody = document.createElement("tbody");
+
+        datiProdotti.forEach(function (prodotto) {
+          var row = document.createElement("tr");
+
+          var immagineCell = document.createElement("td");
+          var immagine = document.createElement("img");
+          immagine.src = prodotto.immagine;
+          immagineCell.appendChild(immagine);
+
+          var nomeCell = document.createElement("td");
+          nomeCell.appendChild(document.createTextNode(prodotto.nome));
+
+          var quantitaCell = document.createElement("td");
+          quantitaCell.appendChild(document.createTextNode(prodotto.quantita));
+
+          var prezzoCell = document.createElement("td");
+          prezzoCell.appendChild(
+            document.createTextNode("$" + prodotto.prezzo.toFixed(2))
+          );
+
+          row.appendChild(immagineCell);
+          row.appendChild(nomeCell);
+          row.appendChild(quantitaCell);
+          row.appendChild(prezzoCell);
+
+          tbody.appendChild(row);
+        });
+
+        table.appendChild(tbody);
+
+        // Aggiunge la tabella all'elemento "tableArea"
+        tableArea.appendChild(table);
       };
 
       generateTable();
